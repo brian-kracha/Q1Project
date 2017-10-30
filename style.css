@@ -1,0 +1,43 @@
+.body{
+  background-color: MediumSeaGreen;
+}
+
+.title{
+  text-align:   center;
+  font-family: cursive;
+  background-color: MediumSeaGreen;
+  color: MintCream;
+  border: double 10px MintCream;
+
+}
+
+.inputs.final{
+  border: double 10px MintCream;
+  height:1000px;
+  width: 98%;
+
+}
+
+ .voice-action{
+   position: absolute;
+   left: 45%;
+   width: 120px;
+   height: 25px;
+
+   background-color:SlateBlue;
+   color: MintCream;
+   font-weight: bold;
+   border-radius: 20%;
+   border: 10px MintCream;
+   padding:25px, 30px;
+   transition-duration: 0.4s;
+ }
+.voice-action:hover{
+  background-color: RoyalBlue;
+
+}
+.voice-action:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
