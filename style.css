@@ -11,14 +11,27 @@
 
 }
 
-.inputs.final{
+#speechContainer{
   border: double 10px MintCream;
-  height:1000px;
+  background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+  position: absolute;
+  height:600px;
   width: 98%;
 
 }
+.voice-action{
+  position:absolute;
+  left: 45%;
+  background-color:SlateBlue;
+  color: MintCream;
+  font-weight: bold;
+  border-radius: 20%;
+  border: 10px MintCream;
+  padding:25px, 30px;
+  transition-duration: 0.4s;
+}
 
- .voice-action{
+#record_button{
    position: absolute;
    left: 45%;
    width: 120px;
@@ -32,12 +45,17 @@
    padding:25px, 30px;
    transition-duration: 0.4s;
  }
-.voice-action:hover{
+#record_button:hover{
   background-color: RoyalBlue;
 
 }
-.voice-action:active {
+#record_button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.inputs{
+  color: MintCream;
+  text-transform: full-width;
+  font-size: 30px;
 }

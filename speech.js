@@ -1,4 +1,4 @@
-// $(document).ready(function(){
+
   // event.preventDefault();
   ////////////////////////////////////////////
   //  recorderImplementation.js
@@ -6,6 +6,17 @@
   //  contains cutom methods, etc for implementing
   //  the speech Recognition
   ////////////////////////////////////////////
+
+  function reset() {
+      return false;
+  }
+
+function textColorChange(array){
+  for(vari=0;i< array.length;i++){
+  var colors = (array[i].style = 'color: #F00')
+  }
+return colors
+}
 
   if (!('webkitSpeechRecognition' in window)) {
       upgrade();
@@ -15,12 +26,13 @@
       var recognizing = false;
       var ignore_onend;
       var start_timestamp;
+      // var timeStamp= Date.now();
 
       var recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
 
-      reset();
+      recognizing=reset();
       recognition.onend = reset;
 
       recognition.onstart = function() {
@@ -41,11 +53,11 @@
           //     showInfo('info_no_speech');
           //     ignore_onend = true;
           //   }
-          //   if (event.error == 'audio-capture') {
-          //     start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
-          //     showInfo('info_no_microphone');
-          //     ignore_onend = true;
-          //   }
+            // if (event.error == 'audio-capture') {
+            //   start_img.src = '//www.google.com/intl/en/chrome/assets/common/images/content/mic.gif';
+            //   showInfo('info_no_microphone');
+            //   ignore_onend = true;
+            // }
             if (event.error == 'not-allowed') {
               console.log('if ',event.error)
               if (event.timeStamp - start_timestamp < 100) {
@@ -72,6 +84,7 @@
               var range = document.createRange();
               range.selectNode(document.getElementById('final_span'));
               window.getSelection().addRange(range);
+
           }
       };
 
@@ -86,30 +99,45 @@
           for (var i = event.resultIndex; i < event.results.length; ++i) {
               if (event.results[i].isFinal) {
                   final_transcript += event.results[i][0].transcript;
+                  console.log(final_transcript);
+
+
               } else {
                   interim_transcript += event.results[i][0].transcript;
               }
+              window.localStorage.setItem(start_timestamp, final_transcript);
+              window.localStorage.getItem('start_timestamp');
           }
 
           final_span.innerHTML = final_transcript;
           interim_span.innerHTML = interim_transcript;
       }
-
+//       Array.prototype.forEach.call(document.getElementsByClassName('final_span'), function (element) {
+//   element.style = 'color: #F00';
+// });
+var array= document.getElementsByClassName('final_span');
+textColorChange(array);
+}
       function upgrade() {
           displayMessageGrowl('browser not compatible - upgrade to latest chrome', 'error');
       }
 
-      function reset() {
-          recognizing = false;
-      }
+
 
       function toggleStop(){
           if (recognizing) {
               recognition.stop();
+              if(recognition.stop()==true){
+                return (localStorage.keyNotes+=1);
+              }
           }
           console.log('toggle recog ', recognizing);
           reset();
-          document.getElementById('record_button').innerHTML = 'Record Lyrics';
+          document.getElementById('record_button').innerHTML = 'Click to Record';
+          console.log(event.target);
+          // if(event.target).on('click',function(audio){
+          //
+          // })
       }
 
       function toggleStartStop() {
@@ -129,52 +157,3 @@
               // document.getElementById('analyser').style.display = 'block';
           }
       }
-  }
-
-
-
-
-
-
-//    var API_KEY='AIzaSyBVel5HTIaHV_HwyHxD_rVIKyo3WPpsCTU';
-//   const Storage = require('@google-cloud/storage');
-//   const storage = Storage();
-//   var speech = require('@google-cloud/speech')();
-//   localStorage.getItem('data');
-//   let body = {
-//   "config": {
-//       "encoding":"FLAC",
-//       "sampleRateHertz": 16000,
-//       "languageCode": "en-US",
-//       "enableWordTimeOffsets": false
-//   },
-//   "audio": {
-//       "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
-//   }
-// };
-//   var $xhr = $.getJSON('https://speech.googleapis.com/v1beta1/speech:syncrecognize?key=${'+API_KEY+'}', function(data){
-//   console.log(data);
-// })
-// // document.getElementsByClassName('voice-action')
-// // $('.voice-action').on('click',function(){
-// //   storage();
-// //   // .getBuckets()
-// //   .then((results) => {
-// //     const buckets = results[0];
-// //     $xhr.done(function(data){
-// //
-//     })
-//
-//     console.log('Buckets:');
-//     buckets.forEach((bucket) => {
-//       console.log(bucket.name);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error('ERROR:', err);
-//
-//
-// })
-
-// })
-// })
