@@ -6,13 +6,15 @@
   //  contains cutom methods, etc for implementing
   //  the speech Recognition
   ////////////////////////////////////////////
+  var id = 1;
+  var final_transcript = '';
 
   function reset() {
       return false;
   }
 
 function textColorChange(array){
-  for(vari=0;i< array.length;i++){
+  for(var i=0;i< array.length;i++){
   var colors = (array[i].style = 'color: #F00')
   }
 return colors
@@ -21,8 +23,6 @@ return colors
   if (!('webkitSpeechRecognition' in window)) {
       upgrade();
   } else {
-
-      var final_transcript = '';
       var recognizing = false;
       var ignore_onend;
       var start_timestamp;
@@ -99,19 +99,16 @@ return colors
           for (var i = event.resultIndex; i < event.results.length; ++i) {
               if (event.results[i].isFinal) {
                   final_transcript += event.results[i][0].transcript;
-                  console.log(final_transcript);
-
-
               } else {
                   interim_transcript += event.results[i][0].transcript;
               }
-              window.localStorage.setItem(start_timestamp, final_transcript);
-              window.localStorage.getItem('start_timestamp');
           }
-
+          console.log(final_transcript);
           final_span.innerHTML = final_transcript;
           interim_span.innerHTML = interim_transcript;
+
       }
+
 //       Array.prototype.forEach.call(document.getElementsByClassName('final_span'), function (element) {
 //   element.style = 'color: #F00';
 // });
@@ -128,7 +125,7 @@ textColorChange(array);
           if (recognizing) {
               recognition.stop();
               if(recognition.stop()==true){
-                return (localStorage.keyNotes+=1);
+                return (localStorage.key);
               }
           }
           console.log('toggle recog ', recognizing);
@@ -138,17 +135,20 @@ textColorChange(array);
           // if(event.target).on('click',function(audio){
           //
           // })
+        id++;
       }
 
       function toggleStartStop() {
           if (recognizing) {
               toggleStop();
               // document.getElementById('analyser').style.display = 'none';
+              console.log("done recognizing", id, final_transcript);
+              localStorage.setItem(id, final_transcript);
+              localStorage.getItem('id');
           } else {
               final_transcript = '';
               recognition.lang = 'en-US';
               recognition.start();
-
               final_span.innerHTML = '';
               interim_span.innerHTML = '';
               start_timestamp = event.timeStamp;

@@ -1,0 +1,104 @@
+.body{
+  /*background-color: MediumSeaGreen;*/
+  height:800px;
+  background: linear-gradient(262deg, #18e4b0, #1348ee, #8ba1bb, #505861, #747b83);
+background-size: 1000% 1000%;
+-webkit-animation: AnimationName 16s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+  }
+
+.title{
+  text-align:   center;
+  font-family: cursive;
+  background-color: MediumSeaGreen;
+  color: MintCream;
+  border: double 10px MintCream;
+
+}
+.button{
+   position: absolute;
+   left: 40%;
+   width: 250px;
+   height: 200px;
+   font-size: 40px;
+   font-family: fantasy;
+   background-color:SlateBlue;
+   color: MintCream;
+   font-weight: bold;
+   border-radius: 20%;
+   border: 10px MintCream;
+   padding:25px, 30px;
+   transition-duration: 0.4s;
+ }
+
+ .button:hover{
+   background-color: RoyalBlue;
+
+ }
+ .button:active {
+   background-color: #3e8e41;
+   box-shadow: 0 5px #666;
+   transform: translateY(4px);
+
+ }
+ .inputs{
+   color: MintCream;
+   text-transform: full-width;
+   font-size: 30px;
+ }
+
+
+.nextPage {
+  color: MintGreen;
+
+    -webkit-animation: mymove 5s infinite;
+    animation: mymove 5s infinite;
+}
+
+.nextPage:active{
+  50% {flex-grow: 8;}
+
+}
+
+.scroll-text {
+  border: 5px solid grey;
+  position: absolute;
+  background: linear-gradient(270deg, #c324e6, #24e6ac, #6f7f7a, #a32d12);
+background-size: 800% 800%;
+-webkit-animation: AnimationName 30s ease infinite;
+  left: 23%;
+  width: 700px;
+  height: 4.5em;
+  overflow: scroll;
+}
+
+.scroll-text ul {
+  width: 800px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0;
+}
+.scroll-text ul li {
+  height: 2em;
+
+}
+/*.scroll-img {
+  border: 1px solid red;
+  width: 680px;
+  height: 142px;
+  overflow: hidden;
+  font-size: 0;
+}
+.scroll-img ul {
+  width: 700px;
+  height: 600px;
+  margin: 0;
+}
+.scroll-img ul li {
+  display: inline-block;
+  margin: 10px 0 10px 10px;
+}*/
